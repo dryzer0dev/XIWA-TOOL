@@ -1,5 +1,7 @@
 # XiwA Tool
 
+<h1>LAUNCH THE FUCKING SETUP.BAT !!!</h1>
+
 ## Features
 
 ```
@@ -69,15 +71,15 @@ Linux:
 
 1. Téléchargez le fichier ZIP de XiwA Tool
 2. Extrayez le contenu du dossier
-3. Lancez `Setup.bat` ou `Setup.py`
+3. Lancez `Setup.bat`
 
 Ou
 
 1. Ouvrez un terminal
-2. Exécutez `git clone https://github.com/votre-repo/XiwA-Tool.git`
-3. Exécutez `cd XiwA-Tool`
+2. Exécutez `git clone https://github.com/votre-repo/XIWA-TOOL.git`
+3. Exécutez `cd XIWA-TOOL`
 4. Exécutez `git pull`
-5. Exécutez `python Setup.py`
+5. Exécutez `setup.bat`
 
 ## À Propos
 XiwA Tool est une suite complète de sécurité et d'analyse développée par Dryz3R. Cette boîte à outils puissante combine plusieurs fonctionnalités essentielles pour l'analyse de sécurité et le test de vulnérabilités.
