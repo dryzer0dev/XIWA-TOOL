@@ -49,8 +49,6 @@ menus = {
         "category": "Outils de Base",
         "options": [
             {"name": "Website-Vulnerability-Scanner", "desc": "Scanner de vulnérabilités web"},
-            {"name": "id-lookup", "desc": "Recherche d'informations Discord"},
-            {"name": "Token-Grabber", "desc": "Récupération de tokens"},
             {"name": "Info-Stealer", "desc": "Collecte d'informations"},
             {"name": "Brute-Force", "desc": "Bruteforce de comptes"}
         ]
@@ -60,10 +58,9 @@ menus = {
         "category": "Fonctionnalités Avancées", 
         "options": [
             {"name": "Server-Scanner", "desc": "Analyse de serveurs"},
-            {"name": "Bot-Creator", "desc": "Création de bots Discord"},
-            {"name": "Mass-Report", "desc": "Système de signalement"},
-            {"name": "Account-Nuker", "desc": "Gestion de comptes"},
-            {"name": "Phone-Locator", "desc": "Localisation de numéros de téléphone"}
+            {"name": "Phone-Locator", "desc": "Localisation de numéros de téléphone"},
+            {"name": "Phone-Locator", "desc": "Localisateur de numéro de téléphone (in dev) (beta) (version 0)"},
+            {"name": "anonymization", "desc": "Anonymisation de l'identité"}
         ]
     },
     "3": {
@@ -80,7 +77,11 @@ menus = {
             {"name": "rat", "desc": "Discord Rat (in dev)"},
             {"name": "Token-Grabber", "desc": "Récupération de tokens"},
             {"name": "nitro-auto-claim", "desc": "Auto-claim de nitro"},
-            {"name": "vocal-ddos", "desc": "DDoS vocal"},
+            {"name": "id-lookup", "desc": "Recherche d'informations Discord"},
+            {"name": "vocal-ddos", "desc": "DDoS vocal"},            
+            {"name": "Bot-Creator", "desc": "Création de bots Discord"},
+            {"name": "Mass-Report", "desc": "Système de signalement"},
+            {"name": "Account-Nuker", "desc": "Gestion de comptes"}
         ]
     },
     "4": {
@@ -90,8 +91,7 @@ menus = {
             {"name": "Phone-OSINT", "desc": "Recherche par numéro de téléphone"},
             {"name": "Email-OSINT", "desc": "Recherche par email"},
             {"name": "Username-OSINT", "desc": "Recherche par pseudo"},
-            {"name": "IP-OSINT", "desc": "Recherche par adresse IP"},
-            {"name": "Phone-Locator", "desc": "Localisateur de numéro de téléphone (in dev) (beta) (version 0)"}
+            {"name": "IP-OSINT", "desc": "Recherche par adresse IP"}
         ]
     },
     "5": {
@@ -102,7 +102,7 @@ menus = {
             {"name": "Location-Finder", "desc": "Recherche de localisation"},
             {"name": "Data-Aggregator", "desc": "Agrégation de données"},
             {"name": "Identity-Search", "desc": "Recherche d'identité"},
-            {"name": "dox-creator", "desc": "Création de dox"},
+            {"name": "dox-creator", "desc": "Création de dox"}
         ]
     },
     "6": {
@@ -110,8 +110,8 @@ menus = {
         "category": "cyberattaque",
         "options": [
             {"name": "botnet-builder", "desc": "Cheat pour botnet"},
-            {"name": "Ransomware-Builder", "desc": "Création de ransomware"},
-        ],
+            {"name": "Ransomware-Builder", "desc": "Création de ransomware"}
+        ]
     },
     "7": {
         "title": "OUTILS HACKING",
@@ -124,8 +124,7 @@ menus = {
             # {"name": "Backdoor-Generator", "desc": "Générateur de backdoors"},
             # {"name": "Keylogger-Builder", "desc": "Création de keyloggers"},
             {"name": "Data-Base-Site-Stealer", "desc": "Récupération de données de sites web"},
-            {"name": "Read-Database", "desc": "Lecture de bases de données"},
-            {"name": "anonymization", "desc": "Anonymisation de l'identité"},
+            {"name": "Read-Database", "desc": "Lecture de bases de données"}
         ]
     }
 }
@@ -151,7 +150,7 @@ def main_loop():
         for key, menu in menus.items():
             print(f"{red}[{white}{key}{red}]{white} {menu['title']} {red}| {white}{menu['category']}")
 
-        menu_choice = input(f"\n{red}[{white}>{red}]{white} Choix du menu (1-6) : ").strip()
+        menu_choice = input(f"\n{red}[{white}>{red}]{white} Choix du menu (1-7) : ").strip()
         if menu_choice not in menus:
             clear()
             continue
