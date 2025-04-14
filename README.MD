@@ -1,25 +1,20 @@
 # XiwA Tool
 
 ## Features
-```
 
-┌── ⚒️ - Outils de Base
+```
+┌── ⚒️ - OUTILS DE BASE
 │   ├── Website Vulnerability Scanner
 │   ├── Info Stealer
-│   ├── Brute Force
-│   ├── Network Scanner
-│   ├── Password Cracker
-│   └── View Database Table
+│   └── Brute Force
 │
-├── 💰 - Outils Avancés
+├── 💰 - OUTILS AVANCES
 │   ├── Server Scanner
 │   ├── Phone Locator
 │   ├── Anonymization Software
-│   ├── Exploit Framework
-│   ├── Data Base Site Stealer
-│   └── Read Database
+│   └── Emoney Control
 │
-├── 🕵️‍♂️ - Outils Discord
+├── 🕵️‍♂️ - OUTILS DISCORD
 │   ├── Webhook Spammer
 │   ├── Token Checker
 │   ├── Member Scraper
@@ -41,32 +36,26 @@
 │   ├── Phone OSINT
 │   ├── Email OSINT
 │   ├── Username OSINT
-│   ├── IP OSINT
-│   ├── Phone Lookup
-│   └── ID Lookup
+│   └── IP OSINT
 │
-├── 🔧 - OSINT Avancé
+├── 🔧 - OSINT AVANCE
 │   ├── Social Scanner
 │   ├── Location Finder
 │   ├── Data Aggregator
 │   ├── Identity Search
 │   └── Dox Creator
 │
-├── ☠️ - Outils de Cyberattaque
+├── ☠️ - CYBERATTAQUE
 │   ├── Botnet Builder
-│   ├── Ransomware Builder
-│   └── PiratattHack
+│   └── Ransomware Builder
 │
-└── 💸 - Outils Financiers
-    ├── Emoney Control
-    └── Cryptocurrency Tools
-    |
-     - HACKING
+└── 🎮 - HACKING
     ├── Network Scanner
     ├── Password Cracker
     ├── Exploit Framework
     ├── Data Base Site Stealer
-    └── Read Database
+    ├── Read Database
+    └── PiratattHack
 ```
 
 ## Requirements
