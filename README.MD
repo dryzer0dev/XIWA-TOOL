@@ -1,19 +1,22 @@
 # XiwA Tool
 
-<h1>LAUNCH THE FUCKING SETUP.BAT !!!</h1>
-
 ## Features
 
-```
 ┌── ⚒️ - Outils de Base
 │   ├── Website Vulnerability Scanner
 │   ├── Info Stealer
-│   └── Brute Force
+│   ├── Brute Force
+│   ├── Network Scanner
+│   ├── Password Cracker
+│   └── View Database Table
 │
 ├── 💰 - Outils Avancés
 │   ├── Server Scanner
 │   ├── Phone Locator
-│   └── Anonymization Software
+│   ├── Anonymization Software
+│   ├── Exploit Framework
+│   ├── Data Base Site Stealer
+│   └── Read Database
 │
 ├── 🕵️‍♂️ - Outils Discord
 │   ├── Webhook Spammer
@@ -30,13 +33,16 @@
 │   ├── Vocal DDoS
 │   ├── Bot Creator
 │   ├── Mass Report
-│   └── Account Nuker
+│   ├── Account Nuker
+│   └── Discord Boost Bot
 │
 ├── 🔎 - OSINT/CSINT
 │   ├── Phone OSINT
 │   ├── Email OSINT
 │   ├── Username OSINT
-│   └── IP OSINT
+│   ├── IP OSINT
+│   ├── Phone Lookup
+│   └── ID Lookup
 │
 ├── 🔧 - OSINT Avancé
 │   ├── Social Scanner
@@ -47,15 +53,19 @@
 │
 ├── ☠️ - Outils de Cyberattaque
 │   ├── Botnet Builder
-│   └── Ransomware Builder
+│   ├── Ransomware Builder
+│   └── PiratattHack
 │
-└── 🎮 - Outils Hacking
+└── 💸 - Outils Financiers
+    ├── Emoney Control
+    └── Cryptocurrency Tools
+    |
+     - HACKING
     ├── Network Scanner
     ├── Password Cracker
     ├── Exploit Framework
     ├── Data Base Site Stealer
     └── Read Database
-```
 
 ## Requirements
 
@@ -71,15 +81,15 @@ Linux:
 
 1. Téléchargez le fichier ZIP de XiwA Tool
 2. Extrayez le contenu du dossier
-3. Lancez `Setup.bat`
+3. Lancez `Setup.bat` ou `Setup.py`
 
 Ou
 
 1. Ouvrez un terminal
-2. Exécutez `git clone https://github.com/votre-repo/XIWA-TOOL.git`
-3. Exécutez `cd XIWA-TOOL`
+2. Exécutez `git clone https://github.com/votre-repo/XiwA-Tool.git`
+3. Exécutez `cd XiwA-Tool`
 4. Exécutez `git pull`
-5. Exécutez `setup.bat`
+5. Exécutez `python Setup.py`
 
 ## À Propos
 XiwA Tool est une suite complète de sécurité et d'analyse développée par Dryz3R. Cette boîte à outils puissante combine plusieurs fonctionnalités essentielles pour l'analyse de sécurité et le test de vulnérabilités.
@@ -94,18 +104,3 @@ XiwA Tool est une suite complète de sécurité et d'analyse développée par Dr
   ```bash
   chmod +x xiwa.py
   ```
-
-### <h1> /!\ VIRUS DETECTION </h1>
-<ul>
-<li>
-Bot-Net generator
-</li>
-
-<li>
-Ransomware generator
-</li>
-
-<li>
-Grabber // Stealer
-</li>
-</ul>
