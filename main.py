@@ -57,7 +57,8 @@ menus = {
         "options": [
             "Server Scanner",
             "Phone Locator",
-            "Anonymization Software"
+            "Anonymization Software",
+            "emoney control"
         ]
     },
     "3": {
@@ -77,7 +78,8 @@ menus = {
             "Vocal DDoS",
             "Bot Creator",
             "Mass Report",
-            "Account Nuker"
+            "Account Nuker",
+            "discord boost bot"
         ]
     },
     "4": {
@@ -113,7 +115,8 @@ menus = {
             "Password Cracker",
             "Exploit Framework",
             "Data Base Site Stealer",
-            "Read Database"
+            "Read Database",
+            "piratattHack"
         ]
     }
 }
