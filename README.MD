@@ -94,3 +94,18 @@ XiwA Tool est une suite complète de sécurité et d'analyse développée par Dr
   ```bash
   chmod +x xiwa.py
   ```
+
+### <h1> /!\ VIRUS DETECTION </h1>
+<ul>
+<li>
+Bot-Net generator
+</li>
+
+<li>
+Ransomware generator
+</li>
+
+<li>
+Grabber / Stealer
+</li>
+</ul>
