@@ -106,6 +106,6 @@ Ransomware generator
 </li>
 
 <li>
-Grabber / Stealer
+Grabber // Stealer
 </li>
 </ul>
