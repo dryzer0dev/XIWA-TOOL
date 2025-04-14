@@ -2,6 +2,7 @@
 
 ## Features
 
+```
 ┌── ⚒️ - Outils de Base
 │   ├── Website Vulnerability Scanner
 │   ├── Info Stealer
@@ -52,6 +53,7 @@
     ├── Exploit Framework
     ├── Data Base Site Stealer
     └── Read Database
+```
 
 ## Requirements
 
