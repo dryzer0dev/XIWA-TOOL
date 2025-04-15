@@ -1,5 +1,8 @@
 # XiwA Tool
 
+![RansomWre Builder](image.png)
+![Bot-Net Builder](image-1.png)
+
 ## Features
 
 ```
