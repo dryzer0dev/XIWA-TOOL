@@ -80,7 +80,7 @@ Linux:
 Ou
 
 1. Ouvrez un terminal
-2. Exécutez `git clone https://github.com/votre-repo/XiwA-Tool.git`
+2. Exécutez `git clone https://github.com/dryzer0dev/XIWA-TOOL`
 3. Exécutez `cd XiwA-Tool`
 4. Exécutez `git pull`
 5. Exécutez `python Setup.py`
