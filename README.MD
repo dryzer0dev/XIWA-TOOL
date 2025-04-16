@@ -118,8 +118,8 @@ délis:
 
 ## tête:
 
-![alt text](image.png)
-![alt text](image-1.png)
+![alt text](image1.png)
+![alt text](image-2.png)
 
 age:
 28 - 29
