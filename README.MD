@@ -1,4 +1,4 @@
-<!-- # XiwA Tool
+# XiwA Tool
 
 ![RansomWre Builder](image.png)
 ![Bot-Net Builder](image-1.png)
@@ -97,50 +97,4 @@ XiwA Tool est une suite complète de sécurité et d'analyse développée par Dr
 - Pour les problèmes d'autorisation :
   ```bash
   chmod +x xiwa.py
-  ``` -->
-
-==============================
-By Dryz3R
-==============================
-
-raison:
-    - Harcèlement;
-    - Agression;
-
-délis:
-    - Agression;
-    - Harcèlement;
-    - Drogue;
-    
-    Consequence prison.
-
--------------------------------
-
-## tête:
-
-![alt text](image1.png)
-![alt text](image-2.png)
-
-age:
-28 - 29
-
-## Localisation:
-
-# Pays
-france
-
-# Ville
-Lorient
-
-# situation
-Celibataire
-
-## Réseaux
-
-Facebook: https://www.facebook.com/guillaumenicol2
-Tiktok: lebgdu56100
-
-### FAMILLE
-
-mère: Anita
-      Lehours
+  ```
