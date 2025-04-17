@@ -13,3 +13,12 @@ echo Exécution de setup.py...
 python setup.py
 
 echo Done.
+
+echo Mise à jour de pip...
+python -m pip install --upgrade pip
+
+echo Installation des dépendances...
+pip install -r requirements.txt
+
+echo Installation terminée!
+pause
