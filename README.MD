@@ -1,9 +1,18 @@
-# XiwA Tool
+# XIWA TOOL README - Cybersecurity Edition
 
-![RansomWre Builder](image.png)
-![Bot-Net Builder](image-1.png)
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=ff0000&height=200&section=header&text=XIWA%20TOOL&fontSize=50&fontColor=ffffff"/>
+</p>
 
-## Features
+<p align="center">
+  <img src="https://img.shields.io/github/stars/dryzer0dev/XIWA-TOOL?style=for-the-badge&color=ff0000"/>
+  <img src="https://img.shields.io/github/forks/dryzer0dev/XIWA-TOOL?style=for-the-badge&color=ff0000"/>
+  <img src="https://img.shields.io/github/issues/dryzer0dev/XIWA-TOOL?style=for-the-badge&color=ff0000"/>
+</p>
+
+---
+
+## options :
 
 ```
 ┌── ⚒️ - OUTILS DE BASE
@@ -59,42 +68,49 @@
     ├── Data Base Site Stealer
     ├── Read Database
     └── PiratattHack
+
 ```
 
-## Requirements
+---
 
-Windows:
-- Python 3.8 ou supérieur
-- Windows 10 ou supérieur
+## 🧨 Overview
 
-Linux:
-- Python 3.8 ou supérieur
-- Distribution Linux récente
+> **XIWA TOOL** is a **multifunctional cybersecurity suite** designed for ethical hackers, penetration testers, and advanced users.  
+> It provides stealthy, powerful, and optimized tools for anonymization, monitoring, OS manipulation, and more — all within one unified toolkit.
 
-## Installation
+<p align="center">
+  <img src="https://img.shields.io/badge/Language-Python%20%7C%20C%23%20%7C%20HTML%20%2F%20CSS%20%2F%20JS-ff0000?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-ff0000?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Security%20Level-High-black?style=flat-square"/>
+</p>
 
-1. Téléchargez le fichier ZIP de XiwA Tool
-2. Extrayez le contenu du dossier
-3. Lancez `Setup.bat` ou `Setup.py`
+---
 
-Ou
+## 🎯 Features
 
-1. Ouvrez un terminal
-2. Exécutez `git clone https://github.com/dryzer0dev/XIWA-TOOL`
-3. Exécutez `cd XiwA-Tool`
-4. Exécutez `git pull`
-5. Exécutez `python Setup.py`
+| Module             | Description                                                                 |
+|--------------------|-----------------------------------------------------------------------------|
+| 🛡️ **Anonymizer**        | VPN switcher, IP faker, DNS mask, MAC spoofer                                |
+| 🕵️ **OS Monitoring**     | Task scanner, system process monitor, stealth logger                        |
+| 🧰 **Windows Tools**     | Registry cleaner, explorer modifier, hidden startup injector                |
+| 🌐 **Web Tools**         | URL analyzer, phishing domain checker, link bypasser                        |
+| 🔥 **Air Crackers**      | WiFi scanner + handshake capturer (via [XIWA Air Crackers](https://github.com/dryzer0dev/xiwa-air-crackers)) |
+| 💣 **Auto Scripts**      | Prebuilt automation for OS / app hardening / penetration tests              |
 
-## À Propos
-XiwA Tool est une suite complète de sécurité et d'analyse développée par Dryz3R. Cette boîte à outils puissante combine plusieurs fonctionnalités essentielles pour l'analyse de sécurité et le test de vulnérabilités.
+---
 
-## Dépannage
+## 🖥️ Preview
 
-- Si vous rencontrez des erreurs de dépendances :
-  ```bash
-  pip install --upgrade -r requirements.txt
-  ```
-- Pour les problèmes d'autorisation :
-  ```bash
-  chmod +x xiwa.py
-  ```
+![Preview](https://github-readme-stats.vercel.app/api/pin/?username=dryzer0dev&repo=XIWA-TOOL&theme=radical&border_color=ff0000&title_color=ff1a1a&text_color=ffffff&icon_color=ff0000)
+
+---
+
+## 🧪 How to Use
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/dryzer0dev/XIWA-TOOL.git
+
+# 2. Launch the main script
+cd XIWA-TOOL
+python main.py
