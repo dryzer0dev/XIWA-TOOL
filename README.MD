@@ -79,7 +79,7 @@
 > It provides stealthy, powerful, and optimized tools for anonymization, monitoring, OS manipulation, and more — all within one unified toolkit.
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Language-Python%20%7C%20C%23%20%7C%20HTML%20%2F%20CSS%20%2F%20JS-ff0000?style=flat-square"/>
+  <img src="https://img.shields.io/badge/Language-Python%20-ff0000?style=flat-square"/>
   <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20Linux-ff0000?style=flat-square"/>
   <img src="https://img.shields.io/badge/Security%20Level-High-black?style=flat-square"/>
 </p>
