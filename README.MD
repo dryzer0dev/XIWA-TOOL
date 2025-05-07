@@ -110,7 +110,18 @@
 ```bash
 # 1. Clone the repository
 git clone https://github.com/dryzer0dev/XIWA-TOOL.git
+```
 
-# 2. Launch the main script
+# ! IF YOU HAVE PYTHON
+
+```
+c
+```
+
+# ! IF YOU HAVEN'T PYTHON
+
+```
+# 3. Launch the install script
 cd XIWA-TOOL
-python main.py
+python setup.bat
+```
