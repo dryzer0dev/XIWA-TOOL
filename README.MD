@@ -112,13 +112,15 @@
 git clone https://github.com/dryzer0dev/XIWA-TOOL.git
 ```
 
-# ! IF YOU HAVE PYTHON
+### ! IF YOU HAVE PYTHON
 
 ```
-c
+# 2. Launch the install script
+cd XIWA-TOOL
+python setup.py
 ```
 
-# ! IF YOU HAVEN'T PYTHON
+### ! IF YOU HAVEN'T PYTHON
 
 ```
 # 3. Launch the install script
