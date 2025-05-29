@@ -57,7 +57,7 @@ menus = {
         "options": [
             "Server Scanner",
             "Phone Locator",
-            "Anonymization Software",
+            "anonymization",
             "emoney control"
         ]
     },
@@ -67,18 +67,13 @@ menus = {
             "Webhook Spammer",
             "Token Checker",
             "Member Scraper", 
-            "Channel Nuker",
             "Member Trusser",
             "Propriety Transfert",
             "Server Nuker",
-            "Discord Rat",
-            "Token Grabber",
             "Nitro Auto Claim",
             "ID Lookup",
             "Vocal DDoS",
             "Bot Creator",
-            "Mass Report",
-            "Account Nuker",
             "discord boost bot"
         ]
     },
@@ -94,9 +89,6 @@ menus = {
     "5": {
         "title": "OSINT AVANCE",
         "options": [
-            "Social Scanner",
-            "Location Finder",
-            "Data Aggregator",
             "Identity Search",
             "Dox Creator"
         ]
@@ -115,7 +107,6 @@ menus = {
             "Password Cracker",
             "Exploit Framework",
             "Data Base Site Stealer",
-            "Read Database",
             "piratattHack"
         ]
     }
