@@ -25,27 +25,72 @@ import time
 
 red = Fore.RED
 white = Fore.WHITE
+blue = Fore.BLUE
+green = Fore.GREEN
+yellow = Fore.YELLOW
 reset = Style.RESET_ALL
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def banner():
+def animate_banner():
     clear()
-    print(f"""{red}
-██╗  ██╗██╗██╗    ██╗ █████╗ 
-╚██╗██╔╝██║██║    ██║██╔══██╗
- ╚███╔╝ ██║██║ █╗ ██║███████║
- ██╔██╗ ██║██║███╗██║██╔══██║
-██╔╝ ██╗██║╚███╔███╔╝██║  ██║
-╚═╝  ╚═╝╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝
-                                    {white}Version 0{reset}
-                                    {red}XIWA OWNS YOU{reset}
-""")
+    print(f"{red}")
+    time.sleep(0.1)
+    
+    print(f"                                    ██╗  ██╗██╗██╗    ██╗ █████╗ ")
+    time.sleep(0.05)
+    print(f"                                    ╚██╗██╔╝██║██║    ██║██╔══██╗")
+    time.sleep(0.05)
+    print(f"                                     ╚███╔╝ ██║██║ █╗ ██║███████║")
+    time.sleep(0.05)
+    print(f"                                     ██╔██╗ ██║██║███╗██║██╔══██║")
+    time.sleep(0.05)
+    print(f"                                    ██╔╝ ██╗██║╚███╔███╔╝██║  ██║")
+    time.sleep(0.05)
+    print(f"                                    ╚═╝  ╚═╝╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝")
+    time.sleep(0.1)
+    
+    print(f"                                {white}Advanced Security & Analysis Platform{reset}")
+    time.sleep(0.05)
+    print(f"                                        {red}Professional Edition v2.1{reset}")
+    time.sleep(0.1)
+
+def animate_menu():
+    animate_banner()
+    
+    print(f"                                {red} ╔═══{' ' * 25}═══╗{reset}")
+    time.sleep(0.05)
+    
+    for key, menu in menus.items():
+        if key == "1":
+            print(f"                                {red}    ({white}{int(key):02d}{red}) {white}> {menu['title']}{reset}")
+        else:
+            print(f"                                {red}     ({white}{int(key):02d}{red}) {white}> {menu['title']}{reset}")
+        time.sleep(0.05)
+    
+    print(f"                                {red} ╚═══{' ' * 25}═══╝{reset}")
+    time.sleep(0.1)
+
+def animate_submenu(menu_id):
+    animate_banner()
+    
+    menu = menus[menu_id]
+    print(f"                                {red} ╔═══{' ' * 25}═══╗{reset}")
+    time.sleep(0.05)
+    
+    for i, option in enumerate(menu["options"], 1):
+        print(f"                                {red}    ({white}{i:02d}{red}) {white}> {option}{' ' * (25-len(option))}{red} {reset}")
+        time.sleep(0.05)
+    
+    print(f"                                {red}    ({white}00{red}) {white}> Return to Main Menu{' ' * 5}{red} {reset}")
+    time.sleep(0.05)
+    print(f"                                {red} ╚═══{' ' * 25}═══╝{reset}")
+    time.sleep(0.1)
 
 menus = {
     "1": {
-        "title": "OUTILS DE BASE",
+        "title": "SECURITY ASSESSMENT",
         "options": [
             "Website Vulnerability Scanner",
             "Info Stealer", 
@@ -53,16 +98,16 @@ menus = {
         ]
     },
     "2": {
-        "title": "OUTILS AVANCES",
+        "title": "ADVANCED TOOLS",
         "options": [
             "Server Scanner",
             "Phone Locator",
-            "anonymization",
-            "emoney control"
+            "Anonymization",
+            "Financial Control"
         ]
     },
     "3": {
-        "title": "OUTILS DISCORD",
+        "title": "DISCORD ANALYSIS",
         "options": [
             "Webhook Spammer",
             "Token Checker",
@@ -74,7 +119,7 @@ menus = {
             "ID Lookup",
             "Vocal DDoS",
             "Bot Creator",
-            "discord boost bot"
+            "Discord Boost Bot"
         ]
     },
     "4": {
@@ -87,21 +132,21 @@ menus = {
         ]
     },
     "5": {
-        "title": "OSINT AVANCE",
+        "title": "ADVANCED OSINT",
         "options": [
             "Identity Search",
             "Dox Creator"
         ]
     },
     "6": {
-        "title": "CYBERATTAQUE",
+        "title": "CYBER ATTACK",
         "options": [
             "Botnet Builder",
             "Ransomware Builder"
         ]
     },
     "7": {
-        "title": "HACKING",
+        "title": "PENETRATION TESTING",
         "options": [
             "Network Scanner",
             "Password Cracker",
@@ -112,69 +157,42 @@ menus = {
     }
 }
 
-def display_menu(menu_id):
-    menu = menus[menu_id]
-    print(f"\n{red}╭{'─' * 70}")
-    print(f"{red}│ {white}{menu['title']}")
-    print(f"{red}├{'─' * 70}")
-    
-    for i, option in enumerate(menu["options"], 1):
-        if i == len(menu["options"]):
-            print(f"{red}├─ {white}{i:02d} {red}│ {white}{option}")
-        else:
-            print(f"{red}├─ {white}{i:02d} {red}│ {white}{option}")
-    
-    print(f"{red}├─ {white}00 {red}│ {white}{'Retour'}")
-    print(f"{red}└{'─' * 72}")
-
 def main_loop():
     while True:
-        banner()
-        print(f"\n{red}╭{'─' * 50}")
-        print(f"{red}│ {white}MENU PRINCIPAL")
-        print(f"{red}├{'─' * 50}")
-        for key, menu in menus.items():
-            print(f"{red}├─ {white}{key} {red}│ {white}{menu['title']}")
-        print(f"{red}└{'─' * 50}{reset}")
-
-        menu_choice = input(f"\n{red}[{white}>{red}]{white} Choix du menu (1-7) : ").strip()
+        animate_menu()
+        
+        menu_choice = input(f"\n{red}[{white}SELECT{red}]{white} Menu choice (1-7): ").strip()
         if menu_choice not in menus:
             clear()
             continue
 
         while True:
             clear()
-            banner()
-            display_menu(menu_choice)
-            
+            animate_submenu(menu_choice)
             max_options = len(menus[menu_choice]["options"])
-            option_choice = input(f"\n{red}[{white}>{red}]{white} Choix de l'option (00-{max_options:02d}) : ").strip()
-            
+            option_choice = input(f"\n{red}[{white}SELECT{red}]{white} Option choice (00-{max_options:02d}): ").strip()
             if not option_choice.isdigit() or int(option_choice) not in range(0, max_options + 1):
                 clear()
                 continue
-
             if option_choice == "0":
                 clear()
                 break
-
             option_index = int(option_choice) - 1
             selected_option = menus[menu_choice]["options"][option_index].replace(" ", "-")
             script_path = f"settings/programs/{selected_option}.py"
-
             clear()
-            banner()
+            animate_banner()
             if os.path.exists(script_path):
-                print(f"\n{red}[{white}*{red}]{white} Lancement de {selected_option}...")
+                print(f"\n{green}[{white}INITIALIZING{green}]{white} Launching {selected_option}...")
                 time.sleep(1)
-                print(f"{red}[{white}+{red}]{white} Préparation des ressources...")
+                print(f"{green}[{white}LOADING{green}]{white} Preparing resources...")
                 time.sleep(1)
                 clear()
                 subprocess.run(["python", script_path])
-                input(f"\n{red}[{white}>{red}]{white} Appuyez sur Entrée pour continuer...")
+                input(f"\n{red}[{white}CONTINUE{red}]{white} Press Enter to continue...")
                 clear()
             else:
-                print(f"\n{red}[{white}!{red}]{white} Erreur : Le module '{selected_option}' n'est pas installé !{reset}")
+                print(f"\n{red}[{white}ERROR{red}]{white} Module '{selected_option}' is not installed!{reset}")
                 time.sleep(2)
                 clear()
 
