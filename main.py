@@ -28,10 +28,20 @@ white = Fore.WHITE
 blue = Fore.BLUE
 green = Fore.GREEN
 yellow = Fore.YELLOW
+cyan = Fore.CYAN
+magenta = Fore.MAGENTA
 reset = Style.RESET_ALL
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+def print_gradient_text(text, start_color, end_color):
+    colors = [start_color, cyan, blue, magenta, end_color]
+    for i, char in enumerate(text):
+        color = colors[i % len(colors)]
+        print(f"{color}{char}", end="", flush=True)
+        time.sleep(0.01)
+    print()
 
 def animate_banner():
     clear()
@@ -39,54 +49,53 @@ def animate_banner():
     time.sleep(0.1)
     
     print(f"                                    ██╗  ██╗██╗██╗    ██╗ █████╗ ")
-    time.sleep(0.05)
+    time.sleep(0.03)
     print(f"                                    ╚██╗██╔╝██║██║    ██║██╔══██╗")
-    time.sleep(0.05)
+    time.sleep(0.03)
     print(f"                                     ╚███╔╝ ██║██║ █╗ ██║███████║")
-    time.sleep(0.05)
+    time.sleep(0.03)
     print(f"                                     ██╔██╗ ██║██║███╗██║██╔══██║")
-    time.sleep(0.05)
+    time.sleep(0.03)
     print(f"                                    ██╔╝ ██╗██║╚███╔███╔╝██║  ██║")
-    time.sleep(0.05)
+    time.sleep(0.03)
     print(f"                                    ╚═╝  ╚═╝╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝")
     time.sleep(0.1)
     
     print(f"                                {white}Advanced Security & Analysis Platform{reset}")
-    time.sleep(0.05)
+    time.sleep(0.03)
     print(f"                                        {red}Professional Edition v2.1{reset}")
     time.sleep(0.1)
+    print(f"{cyan}═══════════════════════════════════════════════════════════════════════════════{reset}")
+    time.sleep(0.05)
 
-def animate_menu():
+def show_menu():
     animate_banner()
     
-    print(f"                                {red} ╔═══{' ' * 25}═══╗{reset}")
-    time.sleep(0.05)
+    print(f"{white}Available Modules:{reset}")
+    print()
     
     for key, menu in menus.items():
-        if key == "1":
-            print(f"                                {red}    ({white}{int(key):02d}{red}) {white}> {menu['title']}{reset}")
-        else:
-            print(f"                                {red}     ({white}{int(key):02d}{red}) {white}> {menu['title']}{reset}")
-        time.sleep(0.05)
+        print(f"{red}[{white}{key}{red}]{white} {menu['title']}{reset}")
+        time.sleep(0.02)
     
-    print(f"                                {red} ╚═══{' ' * 25}═══╝{reset}")
-    time.sleep(0.1)
+    print()
+    print(f"{cyan}═══════════════════════════════════════════════════════════════════════════════{reset}")
 
-def animate_submenu(menu_id):
+def show_submenu(menu_id):
     animate_banner()
     
     menu = menus[menu_id]
-    print(f"                                {red} ╔═══{' ' * 25}═══╗{reset}")
-    time.sleep(0.05)
+    print(f"{white}{menu['title']} - Available Tools:{reset}")
+    print()
     
     for i, option in enumerate(menu["options"], 1):
-        print(f"                                {red}    ({white}{i:02d}{red}) {white}> {option}{' ' * (25-len(option))}{red} {reset}")
-        time.sleep(0.05)
+        print(f"{red}[{white}{i:02d}{red}]{white} {option}{reset}")
+        time.sleep(0.02)
     
-    print(f"                                {red}    ({white}00{red}) {white}> Return to Main Menu{' ' * 5}{red} {reset}")
-    time.sleep(0.05)
-    print(f"                                {red} ╚═══{' ' * 25}═══╝{reset}")
-    time.sleep(0.1)
+    print()
+    print(f"{red}[{white}00{red}]{white} Return to Main Menu{reset}")
+    print()
+    print(f"{cyan}═══════════════════════════════════════════════════════════════════════════════{reset}")
 
 menus = {
     "1": {
@@ -159,7 +168,7 @@ menus = {
 
 def main_loop():
     while True:
-        animate_menu()
+        show_menu()
         
         menu_choice = input(f"\n{red}[{white}SELECT{red}]{white} Menu choice (1-7): ").strip()
         if menu_choice not in menus:
@@ -168,13 +177,13 @@ def main_loop():
 
         while True:
             clear()
-            animate_submenu(menu_choice)
+            show_submenu(menu_choice)
             max_options = len(menus[menu_choice]["options"])
             option_choice = input(f"\n{red}[{white}SELECT{red}]{white} Option choice (00-{max_options:02d}): ").strip()
             if not option_choice.isdigit() or int(option_choice) not in range(0, max_options + 1):
                 clear()
                 continue
-            if option_choice == "0":
+            if option_choice == "00":
                 clear()
                 break
             option_index = int(option_choice) - 1
@@ -196,4 +205,5 @@ def main_loop():
                 time.sleep(2)
                 clear()
 
-main_loop()
+if __name__ == "__main__":
+    main_loop()
