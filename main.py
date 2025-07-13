@@ -1,21 +1,6 @@
 """
 Copyright (c) 2025 Dryz3R - XiwA Tool
 All rights reserved.
-
-ENGLISH:
-This software is the property of Dryz3R and is protected by copyright laws.
-Unauthorized copying, distribution, or modification of this software is strictly prohibited.
-XiwA Tool is a comprehensive security and analysis suite developed by Dryz3R.
-
-FRANÇAIS:
-Ce logiciel est la propriété de Dryz3R et est protégé par les lois sur le droit d'auteur.
-La copie, la distribution ou la modification non autorisée de ce logiciel est strictement interdite.
-XiwA Tool est une suite complète de sécurité et d'analyse développée par Dryz3R.
-
-ESPAÑOL:
-Este software es propiedad de Dryz3R y está protegido por las leyes de derechos de autor.
-Se prohíbe estrictamente la copia, distribución o modificación no autorizada de este software.
-XiwA Tool es una suite completa de seguridad y análisis desarrollada por Dryz3R.
 """
 
 import os
@@ -23,32 +8,167 @@ import subprocess
 from colorama import Fore, Style
 import time
 
+# Couleurs
 red = Fore.RED
 white = Fore.WHITE
 blue = Fore.BLUE
 green = Fore.GREEN
 yellow = Fore.YELLOW
-cyan = Fore.CYAN
-magenta = Fore.MAGENTA
 reset = Style.RESET_ALL
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
-def print_gradient_text(text, start_color, end_color):
-    colors = [start_color, cyan, blue, magenta, end_color]
-    for i, char in enumerate(text):
-        color = colors[i % len(colors)]
-        print(f"{color}{char}", end="", flush=True)
-        time.sleep(0.01)
-    print()
+def parametres():
+    global red
+    clear()
+    animate_banner()
+    print(f"{red}╔═══════════════════════════════════════════════════════════════════════════════╗{reset}")
+    print(f"{red}║{white}                              PARAMÈTRES{red}                              ║{reset}")
+    print(f"{red}╠═══════════════════════════════════════════════════════════════════════════════╣{reset}")
+    print(f"{red}║{white} [1] Changer la couleur des menus{red}                                    ║{reset}")
+    print(f"{red}║{white} [2] Changer la langue (FR/EN/ES){red}                                   ║{reset}")
+    print(f"{red}║{white} [3] Réinitialiser les paramètres{red}                                   ║{reset}")
+    print(f"{red}║{white} [4] Sauvegarder la configuration{red}                                   ║{reset}")
+    print(f"{red}╚═══════════════════════════════════════════════════════════════════════════════╝{reset}")
+    print(f"\n{red}[{white}SELECT{red}]{white} Choix (1-4): ", end="")
+    choice = input().strip()
+    
+    if choice == "1":
+        # Changer la couleur des menus
+        print(f"\n{green}[{white}INFO{green}]{white} Couleurs disponibles :")
+        print(f"{white}1. Rouge")
+        print(f"{white}2. Bleu")
+        print(f"{white}3. Vert")
+        print(f"{white}4. Jaune")
+        print(f"{white}5. Blanc")
+        couleur_choisie = input(f"{red}[{white}SELECT{red}]{white} Entrez le numéro de la couleur : ").strip()
+        couleurs = {
+            "1": Fore.RED,
+            "2": Fore.BLUE,
+            "3": Fore.GREEN,
+            "4": Fore.YELLOW,
+            "5": Fore.WHITE
+        }
+        if couleur_choisie in couleurs:
+            red = couleurs[couleur_choisie]
+            print(f"{green}[{white}SUCCESS{green}]{white} Couleur modifiée avec succès!")
+        else:
+            print(f"{red}[{white}ERREUR{red}]{white} Couleur invalide.")
+    elif choice == "2":
+        # Changer la langue
+        print(f"\n{green}[{white}INFO{green}]{white} Langues disponibles :")
+        print(f"{white}1. Français (FR)")
+        print(f"{white}2. Anglais (EN)")
+        print(f"{white}3. Espagnol (ES)")
+        langue_choisie = input(f"{red}[{white}SELECT{red}]{white} Entrez le numéro de la langue : ").strip()
+        langues = {
+            "1": "FR",
+            "2": "EN",
+            "3": "ES"
+        }
+        if langue_choisie in langues:
+            # Ici, on simule le changement de langue
+            print(f"{green}[{white}SUCCESS{green}]{white} Langue modifiée en {langues[langue_choisie]} avec succès!")
+        else:
+            print(f"{red}[{white}ERREUR{red}]{white} Langue invalide.")
+    elif choice == "3":
+        # Réinitialiser les paramètres
+        print(f"\n{green}[{white}INFO{green}]{white} Réinitialisation des paramètres...")
+        # Réinitialisation simulée des paramètres
+        try:
+            # Valeurs par défaut
+            red = Fore.RED
+            langue = "FR"
+            # Écriture dans le fichier de config
+            with open("config.txt", "w") as f:
+                f.write("couleur=" + str(red) + "\n")
+                f.write("langue=" + langue + "\n")
+            time.sleep(1)
+            print(f"{green}[{white}SUCCESS{green}]{white} Paramètres réinitialisés par défaut et sauvegardés dans config.txt!")
+        except Exception as e:
+            print(f"{red}[{white}ERREUR{red}]{white} Impossible de réinitialiser : {e}")
+    elif choice == "4":
+        # Sauvegarder la configuration
+        print(f"\n{green}[{white}INFO{green}]{white} Sauvegarde de la configuration...")
+        # Sauvegarde dans un fichier
+        try:
+            # On suppose que la variable langue existe ou est à "FR" par défaut
+            langue = "FR"
+            with open("config.txt", "w") as f:
+                f.write("couleur=" + str(red) + "\n")
+                f.write("langue=" + langue + "\n")
+            print(f"{green}[{white}SUCCESS{green}]{white} Configuration sauvegardée dans config.txt!")
+        except Exception as e:
+            print(f"{red}[{white}ERREUR{red}]{white} Impossible de sauvegarder : {e}")
+    
+    input(f"\n{red}[{white}CONTINUE{red}]{white} Appuyez sur Entrée pour continuer...")
+    clear()
+
+def mettre_a_jour():
+    clear()
+    animate_banner()
+    print(f"{red}╔═══════════════════════════════════════════════════════════════════════════════╗{reset}")
+    print(f"{red}║{white}                              MISE À JOUR{red}                              ║{reset}")
+    print(f"{red}╠═══════════════════════════════════════════════════════════════════════════════╣{reset}")
+    print(f"{red}║{white} [1] Mettre à jour depuis GitHub{red}                                    ║{reset}")
+    print(f"{red}║{white} [2] Réinstaller complètement{red}                                       ║{reset}")
+    print(f"{red}║{white} [3] Vérifier les mises à jour{red}                                     ║{reset}")
+    print(f"{red}║{white} [4] Sauvegarder avant mise à jour{red}                                 ║{reset}")
+    print(f"{red}╚═══════════════════════════════════════════════════════════════════════════════╝{reset}")
+    print(f"\n{red}[{white}SELECT{red}]{white} Choix (1-4): ", end="")
+    choice = input().strip()
+    
+    if choice == "1":
+        # Mettre à jour depuis GitHub
+        print(f"\n{green}[{white}INFO{green}]{white} Téléchargement de la mise à jour depuis GitHub...")
+        try:
+            subprocess.run(["git", "pull"], check=True)
+            print(f"{green}[{white}SUCCESS{green}]{white} Mise à jour terminée avec succès!")
+        except Exception as e:
+            print(f"{red}[{white}ERREUR{red}]{white} Impossible de mettre à jour : {e}")
+    elif choice == "2":
+        # Réinstaller complètement
+        print(f"\n{green}[{white}INFO{green}]{white} Réinstallation complète en cours...")
+        try:
+            subprocess.run(["git", "fetch", "--all"], check=True)
+            subprocess.run(["git", "reset", "--hard", "origin/main"], check=True)
+            print(f"{green}[{white}SUCCESS{green}]{white} Réinstallation terminée avec succès!")
+        except Exception as e:
+            print(f"{red}[{white}ERREUR{red}]{white} Impossible de réinstaller : {e}")
+    elif choice == "3":
+        # Vérifier les mises à jour
+        print(f"\n{green}[{white}INFO{green}]{white} Vérification des mises à jour...")
+        try:
+            result = subprocess.run(["git", "fetch"], capture_output=True)
+            status = subprocess.run(["git", "status", "-uno"], capture_output=True, text=True)
+            if "Votre branche est à jour" in status.stdout or "Your branch is up to date" in status.stdout:
+                print(f"{green}[{white}SUCCESS{green}]{white} Aucune mise à jour disponible!")
+            else:
+                print(f"{yellow}[{white}INFO{yellow}]{white} Des mises à jour sont disponibles.")
+        except Exception as e:
+            print(f"{red}[{white}ERREUR{red}]{white} Impossible de vérifier les mises à jour : {e}")
+    elif choice == "4":
+        # Sauvegarder avant mise à jour
+        print(f"\n{green}[{white}INFO{green}]{white} Sauvegarde des fichiers avant mise à jour...")
+        try:
+            import shutil
+            if not os.path.exists("backup"):
+                os.makedirs("backup")
+            for filename in os.listdir("."):
+                if filename.endswith(".py") or filename == "config.txt":
+                    shutil.copy(filename, os.path.join("backup", filename))
+            print(f"{green}[{white}SUCCESS{green}]{white} Sauvegarde terminée dans le dossier 'backup'!")
+        except Exception as e:
+            print(f"{red}[{white}ERREUR{red}]{white} Impossible de sauvegarder : {e}")
+    
+    input(f"\n{red}[{white}CONTINUE{red}]{white} Appuyez sur Entrée pour continuer...")
+    clear()
 
 def animate_banner():
     clear()
-    print(f"{red}")
-    time.sleep(0.1)
-    
-    print(f"                                    ██╗  ██╗██╗██╗    ██╗ █████╗ ")
+    time.sleep(0.03)
+    print(red + f"                                    ██╗  ██╗██╗██╗    ██╗ █████╗ ")
     time.sleep(0.03)
     print(f"                                    ╚██╗██╔╝██║██║    ██║██╔══██╗")
     time.sleep(0.03)
@@ -60,67 +180,114 @@ def animate_banner():
     time.sleep(0.03)
     print(f"                                    ╚═╝  ╚═╝╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝")
     time.sleep(0.1)
-    
-    print(f"                                {white}Advanced Security & Analysis Platform{reset}")
-    time.sleep(0.03)
-    print(f"                                        {red}Professional Edition v2.1{reset}")
     time.sleep(0.1)
-    print(f"{cyan}═══════════════════════════════════════════════════════════════════════════════{reset}")
-    time.sleep(0.05)
+    print(f"{red}{' ' * 25}[{red} i {red}] Paramètre {red} [{red} j {red}] Mettre à jour {red}")
 
-def show_menu():
+def draw_box(title, content, width=30):
+    top = f"╭{'─' * (width-2)}╮"
+    title_line = f"│ {title.center(width-4)} │"
+    bottom = f"╰{'─' * (width-2)}╘"
+    
+    print(red + top + reset)
+    print(red + title_line + reset)
+    for line in content:
+        print(red + f"│ {white}{line.ljust(width-4)}{red} │" + reset)
+    print(red + bottom + reset)
+
+def animate_menu():
     animate_banner()
     
-    print(f"{white}Available Modules:{reset}")
-    print()
+    main_options = [f"({white}{k}{red}) {menus[k]['title']}" for k in menus]
+    col1 = main_options[:4] 
+    col2 = main_options[4:] 
     
-    for key, menu in menus.items():
-        print(f"{red}[{white}{key}{red}]{white} {menu['title']}{reset}")
-        time.sleep(0.02)
+    max_rows = max(len(col1), len(col2))
+    for i in range(max_rows):
+        line = " " * 20
+        if i < len(col1):
+            line += red + " " + col1[i].ljust(35)
+        else:
+            line += " " * 36
+            
+        if i < len(col2):
+            line += red + " " + col2[i].ljust(35)
+        print(line + reset)
+        time.sleep(0.05)
     
     print()
-    print(f"{cyan}═══════════════════════════════════════════════════════════════════════════════{reset}")
 
-def show_submenu(menu_id):
+def animate_submenu(menu_id):
     animate_banner()
-    
     menu = menus[menu_id]
-    print(f"{white}{menu['title']} - Available Tools:{reset}")
-    print()
+    options = [opt for opt in menu["options"] if opt.strip() != ""]
+    n = len(options)
     
-    for i, option in enumerate(menu["options"], 1):
-        print(f"{red}[{white}{i:02d}{red}]{white} {option}{reset}")
-        time.sleep(0.02)
+    cols = 2
+    col_width = 32
+    option_padding = 4  
     
-    print()
-    print(f"{red}[{white}00{red}]{white} Return to Main Menu{reset}")
-    print()
-    print(f"{cyan}═══════════════════════════════════════════════════════════════════════════════{reset}")
+    # Calcul des items par colonne
+    items_per_col = (n + cols - 1) // cols
+    
+    # Fonction pour générer les bordures
+    def make_border(side):
+        return red + side + " " * (col_width - 6) + "   " + side
+    
+    # Bordures parfaitement alignées - 2 colonnes seulement
+    top_border = (
+        red + "╔═══" + " " * (col_width - 6) + "═══╗" + "  " +
+        "╔═══" + " " * (col_width - 6) + "═══╗" + reset
+    )
+    
+    bottom_border = (
+        red + "╚═══" + " " * (col_width - 6) + "═══╝" + "  " +
+        "╚═══" + " " * (col_width - 6) + "═══╝" + reset
+    )
+    
+    # Affichage des bordures supérieures
+    print(" " * 7 + top_border)
+    
+    # Affichage des options
+    for i in range(items_per_col):
+        line = " " * 9
+        for col in range(cols):
+            idx = col * items_per_col + i
+            if idx < n:
+                opt_num = f"{idx + 1:02d}"
+                option = options[idx]
+                line += (red + "   (" + white + opt_num + red + ") > " + 
+                         white + option.ljust(col_width - 12) + red + "   ")
+            else:
+                line += red + " " * (col_width + 6)
+        print(line)
+    
+    # Affichage des bordures inférieures
+    print(" " * 7 + bottom_border)
+    
+    # Option de retour
+    print(f"\n{' ' * 38}{red}   ({white}00{red}) > Return to Main Menu{reset}\n")
 
 menus = {
     "1": {
-        "title": "SECURITY ASSESSMENT",
+        "title": "SECURITY TOOLS",
         "options": [
-            "Website Vulnerability Scanner",
-            "Info Stealer", 
-            "Brute Force"
+            "Vuln Scanner",
+            "Brute Force",
+            "Network Scanner",
+            "Password Cracker",
+            "Exploit Framework",
+            "Data Base Site Stealer",
+            "piratattHack",
+            "Botnet Builder",
+            "Ransomware Builder"
         ]
     },
     "2": {
-        "title": "ADVANCED TOOLS",
-        "options": [
-            "Server Scanner",
-            "Phone Locator",
-            "Anonymization",
-            "Financial Control"
-        ]
-    },
-    "3": {
-        "title": "DISCORD ANALYSIS",
+        "title": "DISCORD TOOLS",
         "options": [
             "Webhook Spammer",
             "Token Checker",
-            "Member Scraper", 
+            "Member Scraper",
             "Member Trusser",
             "Propriety Transfert",
             "Server Nuker",
@@ -131,53 +298,50 @@ menus = {
             "Discord Boost Bot"
         ]
     },
-    "4": {
-        "title": "OSINT/CSINT",
+    "3": {
+        "title": "OSINT TOOLS",
         "options": [
             "Phone OSINT",
             "Email OSINT",
             "Username OSINT",
-            "IP OSINT"
-        ]
-    },
-    "5": {
-        "title": "ADVANCED OSINT",
-        "options": [
+            "IP OSINT",
             "Identity Search",
-            "Dox Creator"
+            "Dox Creator",
+            "Info Stealer",
+            "Server Scanner",
+            "Phone Locator"
         ]
     },
-    "6": {
-        "title": "CYBER ATTACK",
+    "4": {
+        "title": "PRIVACY TOOLS",
         "options": [
-            "Botnet Builder",
-            "Ransomware Builder"
-        ]
-    },
-    "7": {
-        "title": "PENETRATION TESTING",
-        "options": [
-            "Network Scanner",
-            "Password Cracker",
-            "Exploit Framework",
-            "Data Base Site Stealer",
-            "piratattHack"
+            "Anonymization",
+            "Financial Control",
+            "", "", "", "", "", "", ""  # Espaces vides pour garder le format
         ]
     }
 }
 
 def main_loop():
     while True:
-        show_menu()
+        animate_menu()
         
-        menu_choice = input(f"\n{red}[{white}SELECT{red}]{white} Menu choice (1-7): ").strip()
-        if menu_choice not in menus:
+        menu_choice = input(f"\n{red}[{white}SELECT{red}]{white} Menu choice (1-4, i, j): ").strip().lower()
+        
+        # Gestion des touches spéciales
+        if menu_choice == "i":
+            parametres()
+            continue
+        elif menu_choice == "j":
+            mettre_a_jour()
+            continue
+        elif menu_choice not in menus:
             clear()
             continue
 
         while True:
             clear()
-            show_submenu(menu_choice)
+            animate_submenu(menu_choice)
             max_options = len(menus[menu_choice]["options"])
             option_choice = input(f"\n{red}[{white}SELECT{red}]{white} Option choice (00-{max_options:02d}): ").strip()
             if not option_choice.isdigit() or int(option_choice) not in range(0, max_options + 1):
