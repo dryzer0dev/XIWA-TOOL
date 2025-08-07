@@ -8,7 +8,6 @@ import subprocess
 from colorama import Fore, Style
 import time
 
-# Couleurs
 red = Fore.RED
 white = Fore.WHITE
 blue = Fore.BLUE
@@ -35,7 +34,6 @@ def parametres():
     choice = input().strip()
     
     if choice == "1":
-        # Changer la couleur des menus
         print(f"\n{green}[{white}INFO{green}]{white} Couleurs disponibles :")
         print(f"{white}1. Rouge")
         print(f"{white}2. Bleu")
@@ -56,7 +54,6 @@ def parametres():
         else:
             print(f"{red}[{white}ERREUR{red}]{white} Couleur invalide.")
     elif choice == "2":
-        # Changer la langue
         print(f"\n{green}[{white}INFO{green}]{white} Langues disponibles :")
         print(f"{white}1. Français (FR)")
         print(f"{white}2. Anglais (EN)")
@@ -68,19 +65,16 @@ def parametres():
             "3": "ES"
         }
         if langue_choisie in langues:
-            # Ici, on simule le changement de langue
             print(f"{green}[{white}SUCCESS{green}]{white} Langue modifiée en {langues[langue_choisie]} avec succès!")
         else:
             print(f"{red}[{white}ERREUR{red}]{white} Langue invalide.")
+            print("jvais le faire plus tard")
     elif choice == "3":
-        # Réinitialiser les paramètres
         print(f"\n{green}[{white}INFO{green}]{white} Réinitialisation des paramètres...")
-        # Réinitialisation simulée des paramètres
+        print("jvais le faire plus tard")
         try:
-            # Valeurs par défaut
             red = Fore.RED
             langue = "FR"
-            # Écriture dans le fichier de config
             with open("config.txt", "w") as f:
                 f.write("couleur=" + str(red) + "\n")
                 f.write("langue=" + langue + "\n")
@@ -89,11 +83,10 @@ def parametres():
         except Exception as e:
             print(f"{red}[{white}ERREUR{red}]{white} Impossible de réinitialiser : {e}")
     elif choice == "4":
-        # Sauvegarder la configuration
         print(f"\n{green}[{white}INFO{green}]{white} Sauvegarde de la configuration...")
-        # Sauvegarde dans un fichier
+        print("jvais le faire plus tard")
         try:
-            # On suppose que la variable langue existe ou est à "FR" par défaut
+            print("jvais le faire plus tard")
             langue = "FR"
             with open("config.txt", "w") as f:
                 f.write("couleur=" + str(red) + "\n")
@@ -120,7 +113,6 @@ def mettre_a_jour():
     choice = input().strip()
     
     if choice == "1":
-        # Mettre à jour depuis GitHub
         print(f"\n{green}[{white}INFO{green}]{white} Téléchargement de la mise à jour depuis GitHub...")
         try:
             subprocess.run(["git", "pull"], check=True)
@@ -128,7 +120,6 @@ def mettre_a_jour():
         except Exception as e:
             print(f"{red}[{white}ERREUR{red}]{white} Impossible de mettre à jour : {e}")
     elif choice == "2":
-        # Réinstaller complètement
         print(f"\n{green}[{white}INFO{green}]{white} Réinstallation complète en cours...")
         try:
             subprocess.run(["git", "fetch", "--all"], check=True)
@@ -137,7 +128,6 @@ def mettre_a_jour():
         except Exception as e:
             print(f"{red}[{white}ERREUR{red}]{white} Impossible de réinstaller : {e}")
     elif choice == "3":
-        # Vérifier les mises à jour
         print(f"\n{green}[{white}INFO{green}]{white} Vérification des mises à jour...")
         try:
             result = subprocess.run(["git", "fetch"], capture_output=True)
@@ -149,7 +139,6 @@ def mettre_a_jour():
         except Exception as e:
             print(f"{red}[{white}ERREUR{red}]{white} Impossible de vérifier les mises à jour : {e}")
     elif choice == "4":
-        # Sauvegarder avant mise à jour
         print(f"\n{green}[{white}INFO{green}]{white} Sauvegarde des fichiers avant mise à jour...")
         try:
             import shutil
@@ -226,14 +215,11 @@ def animate_submenu(menu_id):
     col_width = 32
     option_padding = 4  
     
-    # Calcul des items par colonne
     items_per_col = (n + cols - 1) // cols
     
-    # Fonction pour générer les bordures
     def make_border(side):
         return red + side + " " * (col_width - 6) + "   " + side
     
-    # Bordures parfaitement alignées - 2 colonnes seulement
     top_border = (
         red + "╔═══" + " " * (col_width - 6) + "═══╗" + "  " +
         "╔═══" + " " * (col_width - 6) + "═══╗" + reset
@@ -244,10 +230,8 @@ def animate_submenu(menu_id):
         "╚═══" + " " * (col_width - 6) + "═══╝" + reset
     )
     
-    # Affichage des bordures supérieures
     print(" " * 7 + top_border)
     
-    # Affichage des options
     for i in range(items_per_col):
         line = " " * 9
         for col in range(cols):
@@ -261,10 +245,8 @@ def animate_submenu(menu_id):
                 line += red + " " * (col_width + 6)
         print(line)
     
-    # Affichage des bordures inférieures
     print(" " * 7 + bottom_border)
     
-    # Option de retour
     print(f"\n{' ' * 38}{red}   ({white}00{red}) > Return to Main Menu{reset}\n")
 
 menus = {
@@ -317,7 +299,7 @@ menus = {
         "options": [
             "Anonymization",
             "Financial Control",
-            "", "", "", "", "", "", ""  # Espaces vides pour garder le format
+            "", "", "", "", "", "", ""
         ]
     }
 }
@@ -328,7 +310,6 @@ def main_loop():
         
         menu_choice = input(f"\n{red}[{white}SELECT{red}]{white} Menu choice (1-4, i, j): ").strip().lower()
         
-        # Gestion des touches spéciales
         if menu_choice == "i":
             parametres()
             continue
